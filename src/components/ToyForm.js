@@ -30,6 +30,10 @@ const ToyForm = ({ onAddToy }) => {
       })
       .then((addedToy) => {
         onAddToy(addedToy)
+        setFormData({
+          name: '',
+          image: ''
+        })
       })
       .catch((error) => {
         console.error("POST failed:", error);
