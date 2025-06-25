@@ -4,12 +4,14 @@ import Header from "./Header";
 import ToyForm from "./ToyForm";
 import ToyContainer from "./ToyContainer";
 
+const API = 'http://localhost:3001/toys/'
+
 const App = () => {
   const [showForm, setShowForm] = useState(false);
   const [toys, setToys] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:3001/toys/')
+    fetch(API)
       .then(res=>res.json())
       .then(setToys)
   }, [])
@@ -21,7 +23,7 @@ const App = () => {
   return (
     <>
       <Header />
-      {showForm ? <ToyForm /> : null}
+      {showForm ? <ToyForm onAddToy={(newToy) => setToys(prev => [...prev, newToy])}/> : null}
       <div className="buttonContainer">
         <button onClick={handleClick}>Add a Toy</button>
       </div>
@@ -31,3 +33,4 @@ const App = () => {
 }
 
 export default App;
+export { API }
