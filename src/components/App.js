@@ -24,6 +24,10 @@ const App = () => {
     setToys(toys.filter((toy) => toy.id !== id))
   }
 
+  const handleLike = (updatedToy) => {
+    setToys(prev => prev.map(toy => toy.id === updatedToy.id ? updatedToy : toy))
+  }
+
   return (
     <>
       <Header />
@@ -31,7 +35,7 @@ const App = () => {
       <div className="buttonContainer">
         <button onClick={handleClick}>Add a Toy</button>
       </div>
-      <ToyContainer toys={toys} onDelete={handleToyDonation}/>
+      <ToyContainer toys={toys} onDelete={handleToyDonation} onLike={handleLike} />
     </>
   );
 }
