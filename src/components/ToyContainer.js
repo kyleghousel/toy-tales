@@ -1,7 +1,7 @@
 import React from "react";
 import ToyCard from "./ToyCard";
 
-const ToyContainer = ({ toys }) => {
+const ToyContainer = ({ onDelete, toys }) => {
   return (
     <div id="toy-collection">{
       toys.map(({id, image, likes, name}) => (
@@ -11,6 +11,7 @@ const ToyContainer = ({ toys }) => {
           image={image}
           likes={likes}
           name={name}
+          onDelete={onDelete}
         />
       ))
     }</div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { API } from './App'
 
-const ToyCard = ({ id, image, likes, name }) => {
+const ToyCard = ({ id, image, likes, name, onDelete }) => {
 
   const handleDelete = () => {
     fetch(API + id, {
@@ -9,8 +9,7 @@ const ToyCard = ({ id, image, likes, name }) => {
     })
       .then((res) => {
         if (!res.ok) throw new Error("Delete failed")
-        console.log('Post deleted successfully')
-        // Optional: update local state here
+        onDelete(id)
       })
       .catch((err) => {
         console.error('Error deleting post:', err)

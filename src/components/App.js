@@ -16,8 +16,12 @@ const App = () => {
       .then(setToys)
   }, [])
 
-  function handleClick() {
+  const handleClick = () => {
     setShowForm((showForm) => !showForm);
+  }
+
+  const handleToyDonation = (id) => {
+    setToys(toys.filter((toy) => toy.id !== id))
   }
 
   return (
@@ -27,7 +31,7 @@ const App = () => {
       <div className="buttonContainer">
         <button onClick={handleClick}>Add a Toy</button>
       </div>
-      <ToyContainer toys={toys}/>
+      <ToyContainer toys={toys} onDelete={handleToyDonation}/>
     </>
   );
 }
